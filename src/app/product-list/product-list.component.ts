@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-
-import { products } from '../products';
+import { CartService } from '../cart.service';
+import { Product, products } from '../products';
 
 @Component({
   selector: 'app-product-list',
@@ -10,9 +10,15 @@ import { products } from '../products';
 })
 export class ProductListComponent {
   products = [...products];
+  constructor(
+    private cartService: CartService
+  ){
 
-  share() {
-    window.alert('The product has been shared!');
+  }
+
+  addToCart(product: Product) {
+    this.cartService.addToCart(product);
+    window.alert('Your product had been added to cart');
   }
 
   onNotify() {

@@ -1,3 +1,6 @@
-<p *ngIf="product && product.price > 700">
-  <button type="button" (click)="notify.emit()">Notify Me</button>
-</p>
+<div *ngIf="product && product.qty == 0" class="product-discount-container">
+  <div class="text-danger-lighter out-of-stock">
+    <bdi>Out of stock</bdi>
+    <div class="notify-me-link"><a href="$" (click)="notify.emit()">Notify Me</a></div>
+  </div>
+</div>

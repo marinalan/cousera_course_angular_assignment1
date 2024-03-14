@@ -4,6 +4,7 @@
   <span>{{ item.name }}</span>
   <span>{{ item.price | currency }}</span>
 </div>
+<p> Sub Total: {{ cartSubTotal() | currency }}</p>
 <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()" id="checkoutForm">
   <div>
     <label for="name"> Name </label>

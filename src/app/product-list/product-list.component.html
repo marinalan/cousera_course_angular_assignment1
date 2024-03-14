@@ -1,19 +1,27 @@
 <h2>Products</h2>
-
+<div class="products-grid">
 <div *ngFor="let product of products" class="product-item">
-  <h3>
     <a
+      [title]="product.name + ' details'"
+      [routerLink]="['/products', product.id]">
+      <div class="product-image-wrapper">
+        <span class="product-image">
+          <img src="./assets/img/{{ product.image }}"/>
+        </span>
+      </div>
+    </a>
+    <a class="product-title"
       [title]="product.name + ' details'"
       [routerLink]="['/products', product.id]"
       >{{ product.name }}
     </a>
-  </h3>
-  <p *ngIf="product.description">Description : {{ product.description }}</p>
-  <div class="buttons-container">
-    <button type="button" (click)="share()">Share</button>
+    <button type="button" (click)="addToCart(product)" class="add-to-cart">Add to cart</button>
+    <div class="product-price">
+      <span class="price">CA${{ product.price }}</span>
+    </div>
     <app-product-alerts [product]="product" (notify)="onNotify()">
     </app-product-alerts>
-  </div>
+</div>
 </div>
 <!-- 
 Copyright Google LLC. All Rights Reserved.

@@ -17,6 +17,12 @@ export class CartService {
     return this.items;
   }
 
+  countSubTotal() {
+     return this.items.reduce( function(a, b){
+        return a + b.price;
+    }, 0);
+  }
+
   clearCart() {
     this.items = [];
     return this.items;
